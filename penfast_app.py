@@ -67,7 +67,7 @@ if pen_allergy:
     **Totaal:** {total_points}
     """)
 
-    # Interpretatie
+    # Interpretatie en aanbevelingen
     st.subheader("Interpretatie van de score")
     if total_points == 0:
         st.success("Zeer lage kans op positieve penicillinetest (<1%).")
@@ -78,14 +78,26 @@ if pen_allergy:
     else:
         st.error("Hoge kans op positieve penicillinetest (50%).")
 
-    # Extra uitleg
-    st.markdown("""
-    ### Uitleg van de PEN-FAST-score
-    - **0 punten**: Zeer lage kans (<1%) op allergie.
-    - **1-2 punten**: Lage kans (5%) op allergie.
-    - **3 punten**: Matige kans (20%).
-    - **4-5 punten**: Hoge kans (50%).
-    """)
+    # Aanbevelingen als uitklapbare toelichting
+    with st.expander("Aanbevelingen op basis van de score"):
+        st.markdown("""
+        **0 punten (Zeer lage kans op allergie (<1%)):**
+        - Het risico op penicilline-allergie is zeer laag. Een consult bij een allergoloog is over het algemeen niet nodig.
+        - Overweeg een provocatietest in een gecontroleerde setting als er specifieke redenen zijn om zekerheid te verkrijgen (bijv. medische noodzaak voor penicilline).
+
+        **1-2 punten (Lage kans op allergie (5%)):**
+        - Overleg met een allergoloog kan nuttig zijn om het risico verder te verduidelijken.
+        - Bespreek met een arts of directe orale penicillineprovocatie in een gecontroleerde omgeving mogelijk is.
+        - Een allergoloog kan aanvullende diagnostiek, zoals een huidtest, uitvoeren indien nodig.
+
+        **3 punten (Matige kans op allergie (20%)):**
+        - Een consult bij een allergoloog wordt sterk aangeraden.
+        - Vermijd penicilline tot de allergoloog heeft vastgesteld of er sprake is van een allergie.
+
+        **4-5 punten (Hoge kans op allergie (50%)):**
+        - Een allergoloog moet worden geraadpleegd voordat penicilline wordt voorgeschreven of ingenomen.
+        - Vermijd penicilline en gerelateerde antibiotica totdat een allergoloog verdere diagnostiek (bijv. huidtesten en provocatietesten) heeft uitgevoerd.
+        """)
 
     # Referentie
     st.markdown("""
