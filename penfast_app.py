@@ -90,3 +90,7 @@ if pen_allergy:
     """)
 else:
     st.warning("De overige vragen zijn alleen relevant als een penicilline-allergie is gemeld door de patiënt.")
+
+<a href="https://github.com/richie80/PENFAST" target="_blank">
+    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="20">
+</a> Bekijk de broncode op GitHub.
