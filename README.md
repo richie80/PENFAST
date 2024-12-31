@@ -1,6 +1,3 @@
-Hier is een voorstel voor een **README**-tekst die je kunt gebruiken op GitHub voor de bovenstaande applicatie:
-
----
 
 # PEN-FAST Calculator
 
@@ -53,6 +50,3 @@ Development and Validation of a Penicillin Allergy Clinical Decision Rule.
 ## Licentie
 Deze applicatie wordt verstrekt onder de MIT-licentie. Zie het bestand `LICENSE` voor meer informatie.
 
----
-
-Laat weten als je aanvullingen of wijzigingen wilt! 😊
