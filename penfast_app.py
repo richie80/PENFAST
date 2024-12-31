@@ -57,6 +57,16 @@ if pen_allergy:
     st.subheader("Totale Score")
     st.write(f"De totale PEN-FAST-score is: **{total_points}**")
 
+    # Toon optelsom
+    st.markdown("### Uitleg van de optelsom")
+    st.write(f"""
+    - Punten voor reactie binnen 5 jaar of onbekend: **{five_years_points}**
+    - Punten voor anafylaxie of ernstige cutane reactie: **{anaphylaxis_points}**
+    - Punten voor benodigde behandeling: **{treatment_points}**
+    ---
+    **Totaal:** {total_points}
+    """)
+
     # Interpretatie
     st.subheader("Interpretatie van de score")
     if total_points == 0:
