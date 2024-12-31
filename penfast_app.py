@@ -21,21 +21,23 @@ if pen_allergy:
     severe_cutaneous = st.checkbox("Ernstige cutane reactie (S)?")
     with st.expander("Meer informatie over ernstige cutane reacties (klik hier)"):
         st.markdown("""
+        ### Wat valt onder ernstige cutane reacties?
         Ernstige of uitgestelde reacties omvatten:
         - **Stevens-Johnson-syndroom**
         - **Toxische epidermale necrolyse**
         - **Drug reaction with eosinophilia and systemic symptoms (DRESS)**
         - **Acute gegeneraliseerde pustuleuze exantheem (AGEP)**
 
-        Patiënten met een ernstige vertraagde uitslag met slijmvliesbetrokkenheid moeten worden beschouwd als gevallen van ernstige cutane reacties.
+        **Belangrijk:** Patiënten met een ernstige vertraagde uitslag met slijmvliesbetrokkenheid moeten worden beschouwd als gevallen van ernstige cutane reacties.
 
-        Uitsluitingen:
+        ### Uitsluitingen
+        De volgende fenotypes zijn uitgesloten van de derivatie- en validatiecohorten:
         - **Acute interstitiële nefritis**
         - **Geneesmiddelgeïnduceerde leverbeschadiging**
         - **Serumziekte**
         - **Isolated drug fever**
         """)
-
+    
     treatment_needed = st.checkbox("Behandeling nodig voor de reactie (T)?")
 
     # Punten toekennen
