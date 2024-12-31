@@ -6,16 +6,6 @@ st.write("""
 De PEN-FAST-regel is een hulpmiddel voor het inschatten van de kans op penicilline-allergie. Vul de vragen in om de score te berekenen.
 """)
 
-# Voeg een GitHub-logo met link toe
-st.markdown(
-    """
-    <a href="https://github.com/richie80/PENFAST" target="_blank">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="50">
-    </a>
-    """,
-    unsafe_allow_html=True,
-)
-
 # Vraag 1: Penicilline-allergie gemeld door patiënt?
 pen_allergy = st.checkbox("Penicilline-allergie gemeld door patiënt (PEN)?")
 
@@ -98,3 +88,17 @@ if pen_allergy:
     """)
 else:
     st.warning("De overige vragen zijn alleen relevant als een penicilline-allergie is gemeld door de patiënt.")
+
+# Voeg een GitHub-logo met link toe onderaan de pagina
+st.markdown(
+    """
+    ---
+    <div style="text-align: center;">
+        <a href="https://github.com/richie80/PENFAST" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="50">
+        </a>
+        <p>Bekijk de broncode op GitHub</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
