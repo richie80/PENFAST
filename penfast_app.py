@@ -16,7 +16,26 @@ if pen_allergy:
     # Overige vragen
     five_years_or_less = st.checkbox("Reactie binnen vijf jaar of minder geleden (F)?")
     anaphylaxis = st.checkbox("Anafylaxie of angio-oedeem (A)?")
+
+    # Uitklapbare toelichting bij S
     severe_cutaneous = st.checkbox("Ernstige cutane reactie (S)?")
+    with st.expander("Meer informatie over ernstige cutane reacties (klik hier)"):
+        st.markdown("""
+        Ernstige of uitgestelde reacties omvatten:
+        - **Stevens-Johnson-syndroom**
+        - **Toxische epidermale necrolyse**
+        - **Drug reaction with eosinophilia and systemic symptoms (DRESS)**
+        - **Acute gegeneraliseerde pustuleuze exantheem (AGEP)**
+
+        Patiënten met een ernstige vertraagde uitslag met slijmvliesbetrokkenheid moeten worden beschouwd als gevallen van ernstige cutane reacties.
+
+        Uitsluitingen:
+        - **Acute interstitiële nefritis**
+        - **Geneesmiddelgeïnduceerde leverbeschadiging**
+        - **Serumziekte**
+        - **Isolated drug fever**
+        """)
+
     treatment_needed = st.checkbox("Behandeling nodig voor de reactie (T)?")
 
     # Punten toekennen
@@ -47,8 +66,8 @@ if pen_allergy:
     ### Uitleg van de PEN-FAST-score
     - **0 punten**: Zeer lage kans (<1%) op allergie.
     - **1-2 punten**: Lage kans (5%) op allergie.
-    - **3 punten**: Matige kans (20%) op allergie.
-    - **4-5 punten**: Hoge kans (50%) op allergie.
+    - **3 punten**: Matige kans (20%).
+    - **4-5 punten**: Hoge kans (50%).
     """)
 else:
     st.warning("De overige vragen zijn alleen relevant als een penicilline-allergie is gemeld door de patiënt.")
