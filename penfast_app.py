@@ -3,52 +3,58 @@ import streamlit as st
 # Titel en introductie
 st.title("PEN-FAST Calculator")
 st.write("""
-Een hulpmiddel om de kans op penicilline-allergie te berekenen op basis van de PEN-FAST-regel.
-Vul de vragen in en krijg direct een score en interpretatie.
+De PEN-FAST-regel is een hulpmiddel voor het inschatten van de kans op penicilline-allergie. Vul de vragen in om de score te berekenen.
 """)
 
-# Inputvragen
-st.subheader("Vragen")
-severe_symptoms = st.selectbox(
-    "Heeft de patiënt ernstige symptomen gehad (zoals anafylaxie)?",
-    ["Ja", "Nee"]
-)
-time_since_reaction = st.selectbox(
-    "Hoeveel jaar geleden was de reactie?",
-    ["<1 jaar", "1-5 jaar", ">5 jaar"]
-)
-immediate_reaction = st.selectbox(
-    "Trad de reactie op binnen 1 uur na inname van penicilline?",
-    ["Ja", "Nee"]
-)
+# Layout zoals in het plaatje
+st.markdown("### PEN-FAST Penicillin Allergy Clinical Decision Rule")
 
-# Scoreberekening
-score = 0
-if severe_symptoms == "Ja":
-    score += 2
-if time_since_reaction == "<1 jaar":
-    score += 2
-elif time_since_reaction == "1-5 jaar":
-    score += 1
-if immediate_reaction == "Ja":
-    score += 1
+# Vragen in tabelvorm
+col1, col2 = st.columns([3, 1])
 
-# Resultaat
-st.subheader("Resultaat")
-st.write(f"Je PEN-FAST-score is: **{score}**")
+with col1:
+    st.write("### Vragen")
+    pen_allergy = st.checkbox("Penicilline-allergie gemeld door patiënt (PEN)?")
+    five_years_or_less = st.checkbox("Reactie binnen vijf jaar of minder geleden (F)?")
+    anaphylaxis = st.checkbox("Anafylaxie of angio-oedeem (A)?")
+    severe_cutaneous = st.checkbox("Ernstige cutane reactie (S)?")
+    treatment_needed = st.checkbox("Behandeling nodig voor de reactie (T)?")
 
-# Interpretatie van de score
-if score >= 3:
-    st.warning("Hoge kans op penicilline-allergie. Overweeg verder onderzoek.")
-elif score == 2:
-    st.info("Matige kans op penicilline-allergie. Overleg met een arts.")
+with col2:
+    st.write("### Punten")
+    pen_points = 1 if pen_allergy else 0
+    five_years_points = 2 if five_years_or_less else 0
+    anaphylaxis_points = 2 if anaphylaxis or severe_cutaneous else 0
+    treatment_points = 1 if treatment_needed else 0
+
+    # Punten per vraag
+    st.write(f"PEN: {pen_points}")
+    st.write(f"F: {five_years_points}")
+    st.write(f"A/S: {anaphylaxis_points}")
+    st.write(f"T: {treatment_points}")
+
+# Totaalpunten
+total_points = pen_points + five_years_points + anaphylaxis_points + treatment_points
+
+st.subheader("Totale Score")
+st.write(f"De totale PEN-FAST-score is: **{total_points}**")
+
+# Interpretatie
+st.subheader("Interpretatie van de score")
+if total_points == 0:
+    st.success("Zeer lage kans op positieve penicillinetest (<1%).")
+elif 1 <= total_points <= 2:
+    st.info("Lage kans op positieve penicillinetest (5%).")
+elif total_points == 3:
+    st.warning("Matige kans op positieve penicillinetest (20%).")
 else:
-    st.success("Lage kans op penicilline-allergie.")
+    st.error("Hoge kans op positieve penicillinetest (50%).")
 
-# Educatie
-st.subheader("Wat betekent de score?")
-st.write("""
-- **0-1**: Lage kans op allergie. Het is waarschijnlijk veilig om penicilline te gebruiken.
-- **2**: Matige kans. Overleg met een arts of allergoloog.
-- **≥3**: Hoge kans. Overweeg allergietesten en verdere evaluatie.
+# Extra uitleg
+st.markdown("""
+### Uitleg van de PEN-FAST-score
+- **0 punten**: Zeer lage kans (<1%) op allergie.
+- **1-2 punten**: Lage kans (5%) op allergie.
+- **3 punten**: Matige kans (20%) op allergie.
+- **4-5 punten**: Hoge kans (50%) op allergie.
 """)
