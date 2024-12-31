@@ -6,10 +6,19 @@ st.write("""
 De PEN-FAST-regel is een hulpmiddel voor het inschatten van de kans op penicilline-allergie. Vul de vragen in om de score te berekenen.
 """)
 
+# Voeg een GitHub-logo met link toe
+st.markdown(
+    """
+    <a href="https://github.com/richie80/PENFAST" target="_blank">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="50">
+    </a>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Vraag 1: Penicilline-allergie gemeld door patiënt?
 pen_allergy = st.checkbox("Penicilline-allergie gemeld door patiënt (PEN)?")
 
-# Als deze vraag met "Ja" wordt beantwoord, toon de overige vragen
 if pen_allergy:
     st.markdown("### Vragen")
 
@@ -22,8 +31,6 @@ if pen_allergy:
 
     # Overige vragen
     anaphylaxis = st.checkbox("Anafylaxie of angio-oedeem (A)?")
-
-    # Uitklapbare toelichting bij S
     severe_cutaneous = st.checkbox("Ernstige cutane reactie (S)?")
     with st.expander("Meer informatie over ernstige cutane reacties (klik hier)"):
         st.markdown("""
@@ -84,13 +91,10 @@ if pen_allergy:
     st.markdown("""
     ---
     **Referentie:**
-    Trubiano JA, Vogrin S, Chua KYL, et al. 
+    Trubiano JA, Vogrin S, Chua KYL, et al.  
     Development and Validation of a Penicillin Allergy Clinical Decision Rule.  
-    *JAMA Intern Med.* 2020;180(5):1–9. doi: [10.1001/jamainternmed.2020.0403](https://doi.org/10.1001/jamainternmed.2020.0403)
+    *JAMA Intern Med.* 2020;180(5):1–9.  
+    [DOI: 10.1001/jamainternmed.2020.0403](https://doi.org/10.1001/jamainternmed.2020.0403)
     """)
 else:
     st.warning("De overige vragen zijn alleen relevant als een penicilline-allergie is gemeld door de patiënt.")
-
-<a href="https://github.com/richie80/PENFAST" target="_blank">
-    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="20">
-</a> Bekijk de broncode op GitHub.
