@@ -36,8 +36,10 @@ if pen_allergy:
         - **Geneesmiddelgeïnduceerde leverbeschadiging**
         - **Serumziekte**
         - **Isolated drug fever**
+
+        Deze fenotypes zijn uitgesloten van de derivatie- en validatiecohorten om de nauwkeurigheid van de regel te waarborgen.
         """)
-    
+
     treatment_needed = st.checkbox("Behandeling nodig voor de reactie (T)?")
 
     # Punten toekennen
@@ -70,6 +72,15 @@ if pen_allergy:
     - **1-2 punten**: Lage kans (5%) op allergie.
     - **3 punten**: Matige kans (20%).
     - **4-5 punten**: Hoge kans (50%).
+    """)
+
+    # Referentie
+    st.markdown("""
+    ---
+    **Referentie:**
+    Trubiano JA, Vogrin S, Chua KYL, et al. 
+    Development and Validation of a Penicillin Allergy Clinical Decision Rule.  
+    *JAMA Intern Med.* 2020;180(5):1–9. doi: [10.1001/jamainternmed.2020.0403](https://doi.org/10.1001/jamainternmed.2020.0403)
     """)
 else:
     st.warning("De overige vragen zijn alleen relevant als een penicilline-allergie is gemeld door de patiënt.")
