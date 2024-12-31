@@ -13,8 +13,14 @@ pen_allergy = st.checkbox("Penicilline-allergie gemeld door patiënt (PEN)?")
 if pen_allergy:
     st.markdown("### Vragen")
 
+    # Vraag: Hoeveel jaar geleden (inclusief onbekend)?
+    time_options = ["<1 jaar", "1-5 jaar", ">5 jaar", "Onbekend"]
+    time_since_reaction = st.selectbox(
+        "Hoe lang geleden vond de reactie plaats? (Inclusief onbekend)",
+        time_options
+    )
+
     # Overige vragen
-    five_years_or_less = st.checkbox("Reactie binnen vijf jaar of minder geleden (F)?")
     anaphylaxis = st.checkbox("Anafylaxie of angio-oedeem (A)?")
 
     # Uitklapbare toelichting bij S
@@ -43,7 +49,7 @@ if pen_allergy:
     treatment_needed = st.checkbox("Behandeling nodig voor de reactie (T)?")
 
     # Punten toekennen
-    five_years_points = 2 if five_years_or_less else 0
+    five_years_points = 2 if time_since_reaction in ["<1 jaar", "1-5 jaar", "Onbekend"] else 0
     anaphylaxis_points = 2 if anaphylaxis or severe_cutaneous else 0
     treatment_points = 1 if treatment_needed else 0
 
